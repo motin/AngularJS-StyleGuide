@@ -15,6 +15,7 @@
 var gulp = require('gulp'),
     plugins = require('gulp-load-plugins')(),
     mainBowerFiles = require('main-bower-files'),
+    opn = require('opn'),
     del = require('del');
 
 
@@ -217,3 +218,18 @@ function scripts(paths, sort, parse) {
 
   };
 }
+
+
+////// LOCAL SERVER //////
+
+gulp.task('connect', ['build'], function() {
+  plugins.connect.server({
+    root: 'public',
+    livereload: true
+  });
+});
+
+gulp.task('open', ['connect'], function (done) {
+  opn('http://localhost:8080', done);
+});
+
