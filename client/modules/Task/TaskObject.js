@@ -23,7 +23,7 @@ module.factory( 'Task', (BaseObject, $http) => {
       // wraps `this.uploading` in a promise that resolves immediately if it is `null` or waits for the promise
       return this.cache('creating', () => $q.when(this.uploading)
         .then( () => $http.post('/api/tasks', this) ) // uploading callback
-        .then( response => return Object.assign(this, response.data) ) // creating callback
+        .then( response => Object.assign(this, response.data) ) // creating callback
         .finally( () => this.creating = null ) // state cleanup (doesn't affect chaining)
       );
     }
@@ -32,7 +32,7 @@ module.factory( 'Task', (BaseObject, $http) => {
       // wraps `this.uploading` in a promise that resolves immediately if it is `null` or waits for the promise
       return this.cache('updating', () => $q.when(this.uploading)
         .then( () => $http.post(`/api/tasks/${this.id}`, this) ) // uploading callback
-        .then( response => return Object.assign(this, response.data) ) // creating callback
+        .then( response => Object.assign(this, response.data) ) // creating callback
         .finally( () => this.updating = null ) // state cleanup (doesn't affect chaining)
       );
     }

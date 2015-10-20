@@ -44,8 +44,8 @@ var paths = {
   },
   html: {
     client: {
-      src: ['client/modules/**/*.html'],
-      dest: 'public/modules/',
+      src: ['client/**/*.html'],
+      dest: 'public/',
     }
   },
   styles: {
